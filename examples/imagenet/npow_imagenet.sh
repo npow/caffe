@@ -10,10 +10,10 @@ VAL_DATA_ROOT=$HOME/code/mnist/data/train_images/
 
 # Set RESIZE=true to resize the images to 256x256. Leave as false if images have
 # already been resized using another tool.
-RESIZE=true
+RESIZE=false
 if $RESIZE; then
-  RESIZE_HEIGHT=256
-  RESIZE_WIDTH=256
+  RESIZE_HEIGHT=28
+  RESIZE_WIDTH=28
 else
   RESIZE_HEIGHT=0
   RESIZE_WIDTH=0
