@@ -5,7 +5,7 @@ layers {
   top: "data"
   top: "label"
   data_param {
-    source: "/Users/npow/code/mnist/data/npow_train_lmdb"
+    source: "/home/ubuntu/code/mnist/data/npow_train_lmdb"
     backend: LMDB
     batch_size: 64
   }
@@ -20,7 +20,7 @@ layers {
   top: "data"
   top: "label"
   data_param {
-    source: "/Users/npow/code/mnist/data/npow_val_lmdb"
+    source: "/home/ubuntu/code/mnist/data/npow_val_lmdb"
     backend: LMDB
     batch_size: 100
   }
