@@ -2,16 +2,15 @@
 # Create the imagenet lmdb inputs
 # N.B. set the path to the imagenet train + val data dirs
 
-EXAMPLE=examples/imagenet
-DATA=data/ilsvrc12
-TOOLS=build/tools
+DATA=/Users/npow/code/mnist/data
+TOOLS=/Users/npow/code/caffe/build/tools
 
-TRAIN_DATA_ROOT=data/ilsvrc12
-VAL_DATA_ROOT=data/ilsvrc12
+TRAIN_DATA_ROOT=/Users/npow/code/mnist/data/data_as_images/train_images/
+VAL_DATA_ROOT=/Users/npow/code/mnist/data/data_as_images/train_images/
 
 # Set RESIZE=true to resize the images to 256x256. Leave as false if images have
 # already been resized using another tool.
-RESIZE=false
+RESIZE=true
 if $RESIZE; then
   RESIZE_HEIGHT=256
   RESIZE_WIDTH=256
@@ -40,9 +39,10 @@ GLOG_logtostderr=1 $TOOLS/convert_imageset \
     --resize_height=$RESIZE_HEIGHT \
     --resize_width=$RESIZE_WIDTH \
     --shuffle \
+    --gray \
     $TRAIN_DATA_ROOT \
-    $DATA/train.txt \
-    $EXAMPLE/ilsvrc12_train_lmdb
+    $DATA/lmdb_train.txt \
+    $DATA/npow_train_lmdb
 
 echo "Creating val lmdb..."
 
@@ -50,8 +50,9 @@ GLOG_logtostderr=1 $TOOLS/convert_imageset \
     --resize_height=$RESIZE_HEIGHT \
     --resize_width=$RESIZE_WIDTH \
     --shuffle \
+    --gray \
     $VAL_DATA_ROOT \
-    $DATA/val.txt \
-    $EXAMPLE/ilsvrc12_val_lmdb
+    $DATA/lmdb_test.txt \
+    $DATA/npow_val_lmdb
 
 echo "Done."
