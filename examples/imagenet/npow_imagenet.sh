@@ -2,11 +2,11 @@
 # Create the imagenet lmdb inputs
 # N.B. set the path to the imagenet train + val data dirs
 
-DATA=/Users/npow/code/mnist/data
-TOOLS=/Users/npow/code/caffe/build/tools
+DATA=$HOME/code/mnist/data
+TOOLS=$HOME/code/caffe/build/tools
 
-TRAIN_DATA_ROOT=/Users/npow/code/mnist/data/data_as_images/train_images/
-VAL_DATA_ROOT=/Users/npow/code/mnist/data/data_as_images/train_images/
+TRAIN_DATA_ROOT=$HOME/code/mnist/data/train_images/
+VAL_DATA_ROOT=$HOME/code/mnist/data/train_images/
 
 # Set RESIZE=true to resize the images to 256x256. Leave as false if images have
 # already been resized using another tool.
