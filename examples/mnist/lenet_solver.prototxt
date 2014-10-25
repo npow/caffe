@@ -20,6 +20,6 @@ display: 100
 max_iter: 10000000
 # snapshot intermediate results
 snapshot: 5000
-snapshot_prefix: "examples/mnist/npow"
+snapshot_prefix: "examples/mnist/raw_npow"
 # solver mode: CPU or GPU
 solver_mode: GPU
