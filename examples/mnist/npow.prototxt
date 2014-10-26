@@ -1,6 +1,6 @@
 name: "LeNet"
 input: "data"
-input_dim: 100
+input_dim: 64
 input_dim: 1
 input_dim: 48
 input_dim: 48
@@ -13,7 +13,7 @@ layers {
   blobs_lr: 2
   convolution_param {
     num_output: 20
-    kernel_size: 7
+    kernel_size: 5
     stride: 1
     weight_filler {
       type: "xavier"
@@ -72,7 +72,7 @@ layers {
   blobs_lr: 1
   blobs_lr: 2
   inner_product_param {
-    num_output: 2000
+    num_output: 500
     weight_filler {
       type: "xavier"
     }
