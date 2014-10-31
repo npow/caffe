@@ -6,7 +6,7 @@ DATA=$HOME/code/mnist/data
 TOOLS=$HOME/code/caffe/build/tools
 
 TRAIN_DATA_ROOT=$HOME/code/mnist/data/train_images/
-VAL_DATA_ROOT=$HOME/code/mnist/data/train_images/
+VAL_DATA_ROOT=$HOME/code/mnist/data/test_images/
 
 # Set RESIZE=true to resize the images to 256x256. Leave as false if images have
 # already been resized using another tool.
@@ -38,17 +38,29 @@ echo "Creating train lmdb..."
 GLOG_logtostderr=1 $TOOLS/convert_imageset \
     --resize_height=$RESIZE_HEIGHT \
     --resize_width=$RESIZE_WIDTH \
+    --gray \
     $TRAIN_DATA_ROOT \
     $DATA/lmdb_train.txt \
     $DATA/npow_train_lmdb_raw
+
+echo "Creating train_rev lmdb..."
+
+GLOG_logtostderr=1 $TOOLS/convert_imageset \
+    --resize_height=$RESIZE_HEIGHT \
+    --resize_width=$RESIZE_WIDTH \
+    --gray \
+    $TRAIN_DATA_ROOT \
+    $DATA/lmdb_train_rev.txt \
+    $DATA/npow_train_rev_lmdb_raw
 
 echo "Creating val lmdb..."
 
 GLOG_logtostderr=1 $TOOLS/convert_imageset \
     --resize_height=$RESIZE_HEIGHT \
     --resize_width=$RESIZE_WIDTH \
+    --gray \
     $VAL_DATA_ROOT \
     $DATA/lmdb_test.txt \
-    $DATA/npow_val_lmdb_raw
+    $DATA/npow_test_lmdb_raw
 
 echo "Done."
