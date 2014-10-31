@@ -38,7 +38,6 @@ echo "Creating train lmdb..."
 GLOG_logtostderr=1 $TOOLS/convert_imageset \
     --resize_height=$RESIZE_HEIGHT \
     --resize_width=$RESIZE_WIDTH \
-    --gray \
     $TRAIN_DATA_ROOT \
     $DATA/lmdb_train.txt \
     $DATA/npow_train_lmdb_raw
@@ -48,7 +47,6 @@ echo "Creating val lmdb..."
 GLOG_logtostderr=1 $TOOLS/convert_imageset \
     --resize_height=$RESIZE_HEIGHT \
     --resize_width=$RESIZE_WIDTH \
-    --gray \
     $VAL_DATA_ROOT \
     $DATA/lmdb_test.txt \
     $DATA/npow_val_lmdb_raw

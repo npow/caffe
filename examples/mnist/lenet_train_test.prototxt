@@ -5,9 +5,9 @@ layers {
   top: "data"
   top: "label"
   data_param {
-    source: "/home/ubuntu/code/caffe/examples/mnist/mnist_train_lmdb"
+    source: "../mnist/data/npow_train_lmdb_raw"
     backend: LMDB
-    batch_size: 64
+    batch_size: 100
   }
   transform_param {
     scale: 0.00390625
@@ -20,7 +20,7 @@ layers {
   top: "data"
   top: "label"
   data_param {
-    source: "/home/ubuntu/code/caffe/examples/mnist/mnist_test_lmdb"
+    source: "../mnist/data/npow_val_lmdb_raw"
     backend: LMDB
     batch_size: 100
   }
