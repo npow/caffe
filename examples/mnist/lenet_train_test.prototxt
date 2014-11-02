@@ -39,7 +39,7 @@ layers {
   blobs_lr: 2
   convolution_param {
     num_output: 20
-    kernel_size: 9
+    kernel_size: 5
     stride: 1
     weight_filler {
       type: "xavier"
@@ -69,7 +69,7 @@ layers {
   blobs_lr: 2
   convolution_param {
     num_output: 50
-    kernel_size: 9
+    kernel_size: 5
     stride: 1
     weight_filler {
       type: "xavier"
@@ -91,46 +91,46 @@ layers {
   }
 }
 
-layers {
-  name: "conv3"
-  type: CONVOLUTION
-  bottom: "pool2"
-  top: "conv3"
-  blobs_lr: 1
-  blobs_lr: 2
-  convolution_param {
-    num_output: 500
-    kernel_size: 3
-    stride: 1
-    weight_filler {
-      type: "xavier"
-    }
-    bias_filler {
-      type: "constant"
-    }
-  }
-}
-layers {
-  name: "pool3"
-  type: POOLING
-  bottom: "conv3"
-  top: "pool3"
-  pooling_param {
-    pool: MAX
-    kernel_size: 2
-    stride: 2
-  }
-}
+#layers {
+#  name: "conv3"
+#  type: CONVOLUTION
+#  bottom: "pool2"
+#  top: "conv3"
+#  blobs_lr: 1
+#  blobs_lr: 2
+#  convolution_param {
+#    num_output: 500
+#    kernel_size: 3
+#    stride: 1
+#    weight_filler {
+#      type: "xavier"
+#    }
+#    bias_filler {
+#      type: "constant"
+#    }
+#  }
+#}
+#layers {
+#  name: "pool3"
+#  type: POOLING
+#  bottom: "conv3"
+#  top: "pool3"
+#  pooling_param {
+#    pool: MAX
+#    kernel_size: 2
+#    stride: 2
+#  }
+#}
 
 layers {
   name: "ip1"
   type: INNER_PRODUCT
-  bottom: "pool3"
+  bottom: "pool2"
   top: "ip1"
   blobs_lr: 1
   blobs_lr: 2
   inner_product_param {
-    num_output: 2000
+    num_output: 500
     weight_filler {
       type: "xavier"
     }
@@ -162,21 +162,21 @@ layers {
     }
   }
 }
-#layers {
-#  name: "accuracy"
-#  type: ACCURACY
-#  bottom: "ip2"
-#  bottom: "label"
-#  top: "accuracy"
-#  include: { phase: TEST }
-#}
 layers {
-  name: "argmax"
-  type: ARGMAX
+  name: "accuracy"
+  type: ACCURACY
   bottom: "ip2"
-  top: "argmax"
+  bottom: "label"
+  top: "accuracy"
   include: { phase: TEST }
 }
+#layers {
+#  name: "argmax"
+#  type: ARGMAX
+#  bottom: "ip2"
+#  top: "argmax"
+#  include: { phase: TEST }
+#}
 layers {
   name: "loss"
   type: SOFTMAX_LOSS
